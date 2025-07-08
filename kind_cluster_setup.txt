@@ -72,16 +72,24 @@ we can create a pod in 2 ways
 Imperative (if we want to go for certification)
 through yamal
 
-#Create a pod in Imperative
+#Create a Standalone pod in Imperative
  kubectl run firstpod --image=nithya890/first:1.0 --port=8080
 
 --run to check pod--
 kubectl get po
 kubectl get pod -o wide
 
-#To check pod in more described way
+#To check pod in more described way(while creating pod if there is a issue we can check here)
 kubectl describe po firstpod
 
+#To check logs of pod
+kubectl logs firstpod
+
+#To log inside a pod
+kubectl exec -it firstpod --bash
+
+#To delete the pod
+kubectl delete pod firstpod
 ==============================================================================================================
 
 
