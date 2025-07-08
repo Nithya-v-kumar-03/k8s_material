@@ -75,6 +75,13 @@ through yamal
 #Create a pod in Imperative
  kubectl run firstpod --image=nithya890/first:1.0 --port=8080
 
+--run to check pod--
+kubectl get po
+kubectl get pod -o wide
+
+#To check pod in more described way
+kubectl describe po firstpod
+
 ==============================================================================================================
 
 
