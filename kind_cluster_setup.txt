@@ -28,6 +28,9 @@ nodes:
 
 kind create cluster --config configfile
 
+#validation
+kubectl get nodes
+
 If nodes are in NotReady state do below steps
 sudo sysctl net/netfilter/nf_conntrack_max=131072
 kind delete cluster
