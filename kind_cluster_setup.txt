@@ -30,6 +30,9 @@ kind create cluster --config configfile
 
 #validation
 kubectl get nodes
+#returns all the kubernetes objects
+kubectl api-resources
+#if namespace is true it is limited to a specific area for a use --if is false we need to specify globally
 
 If nodes are in NotReady state do below steps
 sudo sysctl net/netfilter/nf_conntrack_max=131072
