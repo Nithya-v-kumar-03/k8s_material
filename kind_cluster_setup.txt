@@ -68,6 +68,13 @@ kubectl get pod -n kube-system
 #to check in wide way of the kube-system ns pod
 kubectl get pod -n kube-system -o wide
 
+we can create a pod in 2 ways
+Imperative (if we want to go for certification)
+through yamal
+
+#Create a pod in Imperative
+ kubectl run firstpod --image=nithya890/first:1.0 --port=8080
+
 ==============================================================================================================
 
 
