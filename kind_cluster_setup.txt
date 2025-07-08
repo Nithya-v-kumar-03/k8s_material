@@ -28,13 +28,46 @@ nodes:
 
 kind create cluster --config configfile
 
+
+----If nodes are in NotReady state do below steps-----
+sudo sysctl net/netfilter/nf_conntrack_max=131072
+kind delete cluster
+kind create cluster --config configfile
+
 #validation
 kubectl get nodes
+
+===============Extra i have added it for reference======================================
+If u want to access Kubectl in shortform use command
+alias k=kubectl
+
+
 #returns all the kubernetes objects
 kubectl api-resources
 #if namespace is true it is limited to a specific area for a use --if is false we need to specify globally
 
-If nodes are in NotReady state do below steps
-sudo sysctl net/netfilter/nf_conntrack_max=131072
-kind delete cluster
-kind create cluster --config configfile
+#to check default namespace(Shortform ns)
+kubectl get namespace
+
+# to chect pod(shortform po)
+kubectl get pod
+#it will list the pods under specified namespace(if u didn't specify namespace while creation of pod it will consider default namespace
+
+#to create namespace
+kubectl create ns myns
+
+#To access pod undernamespace command
+kubectl get po -n myns
+
+#To check pod in default namespace
+kubectl get po
+
+#To check under Kube-system namespace pod
+kubectl get pod -n kube-system
+
+#to check in wide way of the kube-system ns pod
+kubectl get pod -n kube-system -o wide
+
+==============================================================================================================
+
+
