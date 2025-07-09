@@ -134,6 +134,12 @@ status: {}
 run ==kubectl apply -f deploy.yaml
 kubectl get po
 kubectl get rs [display the replicaset]
+
+#now delete the pod ,it will automatically create a new pod
+kubectl delete pod podname
+
+#Note:In order to stop or delete the pod creation we need to delete deployment
+kubectl delete deploy mydeploy
 ==============================================================================================================
 
 
