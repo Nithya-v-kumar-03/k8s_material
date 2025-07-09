@@ -140,6 +140,20 @@ kubectl delete pod podname
 
 #Note:In order to stop or delete the pod creation we need to delete deployment
 kubectl delete deploy mydeploy
+
+Scaling
+#now edit deploy.yaml ===replicas:2
+kubectl apply -f deploy.yaml
+
+#1st method to scaleup(it create 8 replicas already 2 has been created0
+kubectl scale deploy mydeploy --replicas=10
+#2nd method change replicas:10 in deploy.yaml
+kubectl apply -f deploy.yaml
+#3rd method(editing live object )not recommanded
+kubectl edit deploy mydeploy  [change replicas:20]
+kubectl get all
+
+
 ==============================================================================================================
 
 
