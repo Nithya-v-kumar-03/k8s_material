@@ -90,6 +90,9 @@ kubectl exec -it firstpod --bash
 
 #To delete the pod
 kubectl delete pod firstpod
+
+#pod creation through yaml & redirect it to pod.yaml file for that the command is
+kubectl run firstpod --image=nithya890/first:1.0 --port=8080 --dry-run=client -o yaml > pod.yaml
 ==============================================================================================================
 
 
