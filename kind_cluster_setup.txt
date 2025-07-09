@@ -93,6 +93,47 @@ kubectl delete pod firstpod
 
 #pod creation through yaml & redirect it to pod.yaml file for that the command is
 kubectl run firstpod --image=nithya890/first:1.0 --port=8080 --dry-run=client -o yaml > pod.yaml
+
+#To create pod from yaml file
+kubectl apply -f pod.yaml
+kubectl get po
+kubectl delete po firstpod  [once after delete the pod will not be present,if we go for deploy method pod will automatically gets created after delete]
+
+#creation of deployment object(to simply create file)
+kubectl create deploy mydeploy --image=nithya890/first:1.0 --port=8080 --dry-run=client -o yaml > deploy.yaml
+
+vi deploy.yamal
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: mydeploy
+  name: mydeploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mydeploy
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: mydeploy
+    spec:
+      containers:
+      - image: nithya890/first:1.0
+        name: first
+        ports:
+        - containerPort: 8080
+        resources: {}
+status: {}
+
+run ==kubectl apply -f deploy.yaml
+kubectl get po
+kubectl get rs [display the replicaset]
 ==============================================================================================================
 
 
