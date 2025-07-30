@@ -5,7 +5,11 @@ openssl genrsa -out john.key 2048
 openssl req -new -key john.key -out john.csr -subj "/CN=john/O=examplegroup"
 
 3. Sign csr with CA certs
+docker cp kind-control-plane:/etc/kubernetes/pki/ca.key .
+docker cp kind-control-plane:/etc/kubernetes/pki/ca.crt .
 openssl x509 -req -in john.csr -CA /etc/kubernetes/pki/ca.crt -CAkey /etc/kubernetes/pki/ca.key  -CAcreateserial -out john.crt
+ openssl x509 -req -in john.csr -CA ca.crt -CAkey ca.key  -CAcreateserial -out john.crt
+
 
 4. Update john certs in config file
 k config set-credentials john --client-certificate=/root/john.crt --client-key=/root/john.key 
